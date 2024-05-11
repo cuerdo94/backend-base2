@@ -34,9 +34,9 @@ application.properties
 Comando para ejecutar proyecto :
 
 ```bash
-bash mvn spring-boot:run
+mvn spring-boot:run
 ```
 
 ## Validar conexión 
 
-<a href="http://localhost:8080/api">Primero Hola Mundo</a>
+<p> Una vez arriba el servicio validar <a href="http://localhost:8080/api">Primero Hola Mundo</a></p>
