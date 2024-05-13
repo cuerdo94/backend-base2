@@ -7,4 +7,6 @@ import com.example.backendbase2.models.ProductoModel;
 @Repository
 public interface ProductoRepository extends CrudRepository<ProductoModel, Long> {
 
+  public abstract Boolean existsByCodigoBarra(String codigoBarra);
+
 }

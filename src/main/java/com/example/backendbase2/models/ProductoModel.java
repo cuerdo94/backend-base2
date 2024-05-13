@@ -2,6 +2,8 @@ package com.example.backendbase2.models;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.example.backendbase2.models.validations.UniqueValue;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,8 @@ public class ProductoModel {
   private String sku;
 
   @Column(unique = true)
+  @NotNull(message = "Código Barra es obligatorio")
+  @UniqueValue
   private String codigoBarra;
 
   @NotNull(message = "Marca es obligatoria")
@@ -131,6 +135,58 @@ public class ProductoModel {
         + ", codigoBarra=" + codigoBarra + ", marca=" + marca + ", alto=" + alto + ", ancho=" + ancho + ", largo="
         + largo + ", profundidad=" + profundidad + ", tipoMedida=" + tipoMedida + ", peso=" + peso + ", volumenMts3="
         + volumenMts3 + "]";
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public void setSku(String sku) {
+    this.sku = sku;
+  }
+
+  public void setCodigoBarra(String codigoBarra) {
+    this.codigoBarra = codigoBarra;
+  }
+
+  public void setMarca(String marca) {
+    this.marca = marca;
+  }
+
+  public void setAlto(double alto) {
+    this.alto = alto;
+  }
+
+  public void setAncho(double ancho) {
+    this.ancho = ancho;
+  }
+
+  public void setLargo(double largo) {
+    this.largo = largo;
+  }
+
+  public void setProfundidad(double profundidad) {
+    this.profundidad = profundidad;
+  }
+
+  public void setPeso(double peso) {
+    this.peso = peso;
+  }
+
+  public void setTipoMedida(String tipoMedida) {
+    this.tipoMedida = tipoMedida;
+  }
+
+  public void setVolumenMts3(double volumenMts3) {
+    this.volumenMts3 = volumenMts3;
   }
 
 }
