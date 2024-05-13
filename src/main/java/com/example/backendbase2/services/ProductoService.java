@@ -83,7 +83,6 @@ public class ProductoService {
   public void eliminar(long id) {
     ProductoModel producto = findById(id);
     productoRepository.delete(producto);
-    throw new CustomException("Eliminado con exito", 200);
   }
 
   public boolean existeCodigoBarra(String codigoBarra) {

@@ -53,8 +53,9 @@ public class ProductoController {
   }
 
   @DeleteMapping("/{id}")
-  public void deleteProducto(@PathVariable Long id) {
+  public ResponseEntity<?> deleteProducto(@PathVariable Long id) {
     productoService.eliminar(id);
+    return CustomResponseHelp.dogRespuesta(200);
   }
 
   @GetMapping("/existe/{codigobarra}")

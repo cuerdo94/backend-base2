@@ -22,7 +22,6 @@ public class CustomResponseHelp {
         try {
           HttpHeaders headers = new HttpHeaders();
           headers.setContentType(MediaType.IMAGE_JPEG);
-          System.out.println(status);
           return new ResponseEntity<>(responseEntity.getBody(), headers, HttpStatusCode.valueOf(status));
         } catch (Exception e) {
         }
