@@ -9,21 +9,29 @@ import com.example.backendbase2.helpers.CustomResponseHelp;
 import com.example.backendbase2.helpers.MapResponseHelper;
 import com.example.backendbase2.models.ProductoModel;
 import com.example.backendbase2.services.ProductoService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
+@Tag(name = "Productos")
 @RequestMapping("/api/productos")
 public class ProductoController {
 
   @Autowired
   private ProductoService productoService;
 
+  @Operation(summary = "Listar productos")
   @GetMapping
-  public ResponseEntity<?> obtenerLista() {
+  public ResponseEntity<?> obtenerLista(@RequestParam(defaultValue = "0") int numeroPagina,
+      @RequestParam(defaultValue = "10") int cantidadItems) {
     return CustomResponseHelp.apiRespuesta(200, "Producto",
-        productoService.obtenerLista());
+        productoService.obtenerLista(numeroPagina,
+            cantidadItems));
   }
 
+  @Operation(summary = "Crear productos")
   @PostMapping
   public ResponseEntity<?> crearProducto(@Valid @RequestBody ProductoModel producto,
       BindingResult bindingResult) {
@@ -37,6 +45,7 @@ public class ProductoController {
         nuevoProducto);
   }
 
+  @Operation(summary = "Obtener producto")
   @GetMapping("/{id}")
   public ResponseEntity<?> obtenerProductoId(@PathVariable Long id) {
     ProductoModel producto = productoService.findById(id);
@@ -44,6 +53,7 @@ public class ProductoController {
         producto);
   }
 
+  @Operation(summary = "Actualizar producto")
   @PutMapping("/{id}")
   public ResponseEntity<?> actualizarProducto(@PathVariable Long id,
       @Valid @RequestBody ProductoModel productoDetails,
@@ -52,12 +62,14 @@ public class ProductoController {
         productoService.actualizar(id, productoDetails));
   }
 
+  @Operation(summary = "Eliminar producto")
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteProducto(@PathVariable Long id) {
     productoService.eliminar(id);
     return CustomResponseHelp.dogRespuesta(200);
   }
 
+  @Operation(summary = "Validar si existe código de barra")
   @GetMapping("/existe/{codigobarra}")
   public ResponseEntity<?> existe(@PathVariable String codigobarra) {
     return CustomResponseHelp.apiRespuesta(200, "Actualización exitosa",

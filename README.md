@@ -40,3 +40,7 @@ mvn spring-boot:run
 ## Validar conexión 
 
 <p> Una vez arriba el servicio validar <a href="http://localhost:8080/api">Primero Hola Mundo</a></p>
+
+## Swagger 
+
+<p> Link Swagger puerto 8080 <a href="http://localhost:8080/swagger-ui/index.htm">Swagger</a></p>

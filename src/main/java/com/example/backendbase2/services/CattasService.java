@@ -1,9 +1,13 @@
 package com.example.backendbase2.services;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,12 +18,14 @@ public class CattasService {
   @Autowired
   private RestTemplate restTemplate;
 
-  public String obtenerGatoRandom() {
+  public ResponseEntity<byte[]> obtenerGatoRandom() {
+
+    String url = baseUrl + "/cat";
     HttpHeaders headers = new HttpHeaders();
-    headers.set("Content-Type", "application/json");
-    HttpEntity<String> entity = new HttpEntity<>(headers);
-    String url = baseUrl + "/cat?json=true";
-    return restTemplate.exchange(url, HttpMethod.GET, entity, String.class).getBody();
+    headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
+    ResponseEntity<byte[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers),
+        byte[].class);
+    return responseEntity;
 
   }
 }
