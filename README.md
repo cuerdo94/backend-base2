@@ -6,6 +6,7 @@ Prueba Técnica Backend Java Spring boot
 
 - JDK 17.
 - Maven 3.9.6.
+- Base de datos mysql
 
 ## Desafio a resolver
 
@@ -27,7 +28,7 @@ mvn install
 
 ## Configurar
 
-application.properties
+application.properties, en escencia base de dato
 
 ## Ejecutar 
 
@@ -39,7 +40,7 @@ mvn spring-boot:run
 
 ## Validar conexión 
 
-<p> Una vez arriba el servicio validar <a href="http://localhost:8080/api">Primero Hola Mundo</a></p>
+<p> Una vez arriba el servicio validar <a href="http://localhost:8080/api/random-gato">Gato Random</a></p>
 
 ## Swagger 
 
