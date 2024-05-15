@@ -17,6 +17,7 @@ import jakarta.validation.Valid;
 @RestController
 @Tag(name = "Productos")
 @RequestMapping("/api/productos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductoController {
 
   @Autowired
